@@ -40,9 +40,27 @@ object Test2{
     def main(args: Array[String]){
         val states = 10 //numarul de stari ale sistemului
         val stateSeq = stateSequence(states) // se creaza secventa de stari
+        
+        //e
+        //Trebuie sa interam prin fiecare zi si sa aplicam MPEVariableElimination
 
-        println(VariableElimination.probability(stateSeq(5).consum, "scazut"))
 
+        //f
+        stateSeq(6).stare.observe("nu prea buna")  //in starea a 6a nu era prea buna
+        
+        //println(VariableElimination.probability(stateSeq(10).ascuns))
+        
+        val algorithm = MPEVariableElimination()
+        algorithm.start()
+        println(algorithm.mostLikelyValue(stateSeq(10).ascuns)) //probabilitatea din starea 10 daca am pus observe pe starea 6
+        algorithm.kill()
+
+
+        //g
+        stateSeq(7).stare.observe("bolnav")
+        //Trebuie sa iteram prin fiecare stare acum sin stateSeq
+
+        //nu am avut timp sa fac functia de cautare prin toate starile
     }
 
 }
